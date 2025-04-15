@@ -7,61 +7,114 @@
 	<link rel="stylesheet" href="./assets/css/styles.css">
 
 	<style>
-		html {
-			width: 100%;
-			height: 100%;
-		}
+		
+	
 		body {
 			margin: 1rem;
 			background-color: black;
-			background: url("assets/img/flames.gif");
+			color: rgb(245, 245, 245);
+			font-size: 3rem;
+			background: url("assets/img/fish.Gif");
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
-			color: whitesmoke;
-			font-size: 5rem;
 			overflow: hidden;
 		}
 
 		.grid-container {
-			display: grid;
-
-			grid-template-columns: 1fr 1fr 1fr;
-			gap: 2rem;
+			display:grid;
 			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: 2rem;
+			margin: 15% 4rem 0 4rem;
 
 		}
 
 		.last {
 			padding-bottom: 2rem;
-			border-bottom: 2px solid rgb(220, 200, 180);
-			margin: 15% 4rem 0 4rem;
+			border-bottom: 2px solid rgb(255, 128, 0);
+			
 
 		}
-		
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			transition-property: transform;
+			transition-duration: 3s;
+		}
+		.ex1 { transform: translate(30px, 30px) }
+		.ex2 { transform: scale(.5, .5) }
+		.ex3 { transform: rotate(45deg) }
+
 	</style>
 </head>
 
 <body>
 	<div class="grid-container">
 
-		<div>A</div>
-		<div>radiant</div>
-		<div class="last">young</div>
-		<div>woman</div>
-		<div>to</div>
-		<div>light</div>
+		<div>While</div>
 		<div>the</div>
-		<div class="last">darkest</div>
-		<div>corners</div>
-		<div>of</div>
-		<div class="last">winter</div>
+		<div>water</div>
+		<div class="last">flows</div>
+		<div>As</div>
+		<div>the</div>
+		<div>fish</div>
+		<div>swim</div>
+		<div class="last">by</div>
+		<div>OH</div>
+		<div>how</div>
+		<div>the</div>
+		<div>time</div>
+		<div class="last">flies</div>
 
 	</div>
 
 
-	<img src="assets/img/flames.gif"> 
+	<script>
+
+function randomNumber(min, max){
+	return (Math.random() * (max-min)) + min;
+}
+
+//define divs variable
+let divs = document.querySelectorAll(".grid-container div");
+
+function randomize() {
+
+// apply only to each of the div tags
+divs.forEach(function (div) {
+	let scale = randomNumber(.5, 1.2);
+	let translateX = randomNumber(0, 50);
+	let translateY = randomNumber(0, 20);
+	let rotate = randomNumber(0,360);
+
+
+//half of the time do this...
+if (Math.random() > .5) {
+	scale = 1; //don't affect scale
+	translateX = randomNumber(0, 80);
+	translateY = randomNumber(0, 80);
+}
+
+div.style.transform = `scale(${scale}) translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
+});
+}
+
+document.addEventListener("click", randomize);
+
+
+//		let rotation = 0; 
+//		document.addEventListener("click", function () {
+//			let min = 10;
+//			let max = 40;
+//		rotation += Math.random() * (max - min) + min;
+//		document.body.style.transform = `rotate(${rotation}deg)`;
+// });
+
+</script>
+
 
 </body>
-
 </html>
